@@ -4,7 +4,7 @@
 
 This project analyzes tourism trends in Albania using official monthly tourism data from the Albanian Institute of Statistics (INSTAT).
 
-The analysis focuses on visitor arrivals, nights spent, seasonal tourism patterns, and average length of stay for resident and non resident visitors. Python and Pandas were used to clean, transform, and analyze the data, while SQLite and SQL were used for additional querying and analysis. Matplotlib was used to create visualizations highlighting major tourism trends.
+The analysis focuses on visitor arrivals, nights spent, seasonal tourism patterns, and average length of stay for resident and non-resident visitors. Python and Pandas were used to clean, transform, and analyze the data. SQLite and SQL were used for additional analysis, and Matplotlib was used to create visualizations of major tourism trends.
 
 ## Data Source
 
@@ -16,7 +16,7 @@ The analysis includes:
 
 - Total visitor arrivals
 - Resident visitor arrivals
-- Non resident visitor arrivals
+- Non-resident visitor arrivals
 - Total nights spent
 - Nights spent by residents
 - Nights spent by non-residents
@@ -31,29 +31,30 @@ Source: [INSTAT Tourism Statistics](https://www.instat.gov.al/en/themes/industry
 - SQLite
 - SQL
 - PyCharm
-- Git & GitHub
+- Git
+- GitHub
 
 ## Data Cleaning and Preparation
 
-The original INSTAT tourism data was provided in Excel format and required several cleaning and transformation steps before analysis.
+The original INSTAT data was provided in Excel format and required cleaning and restructuring before analysis.
 
 Using Python and Pandas, I:
 
-- Loaded and inspected the original Excel datasets
+- Loaded the original Excel datasets
 - Cleaned and standardized column names
-- Reshaped monthly data from wide to long format using `melt()`
-- Standardized resident and non resident visitor categories
+- Reshaped the monthly data from wide to long format using `melt()`
+- Standardized resident and non-resident visitor categories
 - Converted monthly values into a consistent date format
-- Merged visitor arrival and nights spent datasets
+- Combined visitor arrivals with nights spent
 - Calculated average length of stay
-- Exported a final analysis ready CSV dataset
-- Loaded the processed dataset into a SQLite database for SQL analysis
+- Exported the cleaned data to CSV
+- Loaded the final dataset into a SQLite database
 
 The final combined dataset contains 198 records covering monthly tourism activity from January 2021 through June 2026.
 
 ## Analysis
 
-The project examines several aspects of Albania's tourism activity, including:
+The project analyzes:
 
 - Total arrivals by visitor type
 - Total nights spent by visitor type
@@ -61,15 +62,15 @@ The project examines several aspects of Albania's tourism activity, including:
 - Annual tourism growth
 - Monthly tourism seasonality
 - Peak tourism months
-- Resident vs. non resident tourism patterns
+- Resident and non-resident tourism patterns
 
-SQL was also used to reproduce and validate several findings from the Python analysis.
+SQL was also used to analyze the processed dataset and compare results with the Python analysis.
 
 ## Key Findings
 
-### Non Resident Tourism Growth
+### Non-Resident Tourism Growth
 
-Non resident visitor arrivals increased substantially between 2021 and 2025:
+Non-resident visitor arrivals increased substantially between 2021 and 2025:
 
 - 2021: 685,081
 - 2022: 886,515
@@ -77,31 +78,31 @@ Non resident visitor arrivals increased substantially between 2021 and 2025:
 - 2024: 2,185,093
 - 2025: 3,039,712
 
-The 2026 data covers only January through June and is therefore not directly comparable with the completed calendar years of previous data.
+The 2026 data covers only January through June, so it is not directly compared with the completed calendar years.
 
 ### Visitor Composition
 
 Across the full dataset:
 
-- Non residents accounted for approximately 66.15% of visitor arrivals.
+- Non-residents accounted for approximately 66.15% of visitor arrivals.
 - Residents accounted for approximately 33.85% of visitor arrivals.
-- Non residents accounted for approximately 69.35% of total nights spent.
+- Non-residents accounted for approximately 69.35% of total nights spent.
 - Residents accounted for approximately 30.65% of total nights spent.
 
 ### Average Length of Stay
 
-Average length of stay was calculated using total nights spent divided by total arrivals:
+Average length of stay was calculated by dividing total nights spent by total arrivals:
 
 - Non-residents: approximately 2.48 nights
 - Residents: approximately 2.14 nights
 
-Non resident visitors therefore stayed longer on average than resident visitors.
+Non-resident visitors stayed longer on average than resident visitors.
 
 ### Tourism Seasonality
 
-The monthly analysis shows a strong seasonal tourism pattern, with visitor activity increasing significantly during the summer months.
+The monthly analysis shows a strong seasonal pattern, with tourism activity increasing during the summer months.
 
-The highest single month for non-resident arrivals in the dataset was August 2025, with 650,108 arrivals.
+The highest single month for non-resident arrivals in the dataset was **August 2025**, with **650,108 arrivals**.
 
 ## Visualizations
 
@@ -109,32 +110,32 @@ The highest single month for non-resident arrivals in the dataset was August 202
 
 ![Annual Tourism Arrivals](images/annual_tourism_arrivals.png)
 
-This visualization compares annual resident and non resident visitor arrivals. Only complete calendar years from 2021 through 2025 are included to avoid comparing full years with partial 2026 data.
+This chart compares annual resident and non-resident visitor arrivals. Only complete calendar years from 2021 through 2025 are included so partial 2026 data does not affect the comparison.
 
 ### Monthly Tourism Seasonality
 
 ![Monthly Tourism Seasonality](images/monthly_tourism_seasonality.png)
 
-This visualization shows the average monthly pattern of non resident arrivals and highlights the strong increase in tourism activity during the summer season.
+This chart shows average monthly non-resident arrivals using complete calendar years from 2021 through 2025. It highlights the increase in tourism activity during the summer months.
 
 ### Average Length of Stay
 
 ![Average Length of Stay](images/average_length_of_stay.png)
 
-This visualization compares the average length of stay for resident and non-resident visitors.
+This chart compares the average length of stay for resident and non-resident visitors.
 
 ## SQL Analysis
 
 The processed tourism dataset was loaded into a SQLite database for additional analysis.
 
-SQL queries were used to analyze:
+SQL queries were used to examine:
 
 - Total arrivals by visitor type
 - Total nights spent by visitor type
 - Average length of stay
 - Peak non-resident tourism month
 - Annual non-resident arrivals
-- Previous-year arrival comparisons using the `LAG()` window function
+- Previous year arrival comparisons using the `LAG()` window function
 
 The SQL queries are available in:
 
@@ -152,8 +153,8 @@ albania-tourism-analytics/
 │
 ├── images/
 │   ├── annual_tourism_arrivals.png
-│   ├── monthly_tourism_seasonality.png
-│   └── average_length_of_stay.png
+│   ├── average_length_of_stay.png
+│   └── monthly_tourism_seasonality.png
 │
 ├── sql/
 │   └── analysis_queries.sql
@@ -161,10 +162,47 @@ albania-tourism-analytics/
 ├── src/
 │   ├── analyze_tourism.py
 │   ├── clean_monthly_arrivals.py
+│   ├── clean_monthly_nights_spent.py
 │   ├── combine_data.py
-│   ├── create_database.py
-│   └── explore_data.py
+│   └── create_database.py
 │
 ├── tourism_analysis.db
 ├── README.md
 └── requirements.txt
+```
+
+## Skills Demonstrated
+
+This project demonstrates experience with:
+
+- Python data analysis
+- Pandas data cleaning and transformation
+- Excel and CSV data
+- Reshaping data from wide to long format
+- Combining multiple datasets
+- Date and time series analysis
+- Creating calculated metrics
+- Exploratory data analysis
+- Data visualization with Matplotlib
+- SQLite database creation
+- SQL aggregation and filtering
+- Common Table Expressions (CTEs)
+- SQL window functions
+- Comparing analytical results across Python and SQL
+- Git and GitHub
+- Organizing a reproducible data analytics project
+
+## How to Run
+
+1. Clone the repository.
+2. Install the packages listed in `requirements.txt`.
+3. Run `clean_monthly_arrivals.py` to clean the arrivals data.
+4. Run `clean_monthly_nights_spent.py` to clean the nights-spent data.
+5. Run `combine_data.py` to create the combined analysis dataset.
+6. Run `create_database.py` to create the SQLite database.
+7. Run `analyze_tourism.py` to reproduce the analysis and visualizations.
+8. Review `sql/analysis_queries.sql` for the SQL analysis.
+
+## Author
+
+Andrea Bulli
